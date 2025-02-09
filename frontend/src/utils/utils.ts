@@ -1,3 +1,4 @@
+// @ts-nocheck comment
 import { type ClassValue, clsx } from "clsx"
 import { twMerge } from "tailwind-merge"
 

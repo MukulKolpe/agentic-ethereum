@@ -138,6 +138,8 @@ async function main() {
     const keyboard = Markup.inlineKeyboard([
       [Markup.button.callback("🛠 Create DAO", "create_dao")],
       [Markup.button.callback("👤 Register", "register_user")],
+      [Markup.button.callback("📜 Create governance token", "create_token")],
+      [Markup.button.callback("📊 Summarize Proposal", "summarize_proposal")],
     ]);
 
     // Start command with menu
@@ -171,6 +173,24 @@ async function main() {
           "`Profile Image: (Link): `",
         { parse_mode: "Markdown" }
       );
+    });
+
+    // Handle "Create governance token" button click
+    bot.action("create_token", async (ctx) => {
+      ctx.reply(
+        "🔹 To create a governance token, please provide the following details:\n\n" +
+          "`Token Name: MyToken`\n" +
+          "`Token Symbol: MYT`\n" +
+          "`Initial Supply: 1000`\n" +
+          "`Decimals: 18`\n" +
+          "`User Wallet Address: 0x...`\n" +
+          { parse_mode: "Markdown" }
+      );
+    });
+
+    // Handle "Summarize Proposal" button click
+    bot.action("summarize_proposal", async (ctx) => {
+      ctx.reply("🔹 Provide description of proposal");
     });
 
     bot.on("text", async (ctx) => {

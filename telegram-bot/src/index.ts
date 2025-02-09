@@ -170,7 +170,7 @@ async function main() {
           "`Wallet Address: 0x...`\n" +
           "`Email: jack@gmail.com" +
           "`Profile description: A short bio about your profile`\n" +
-          "`Profile Image: (Link): `",
+          "`Profile Image: (Link): `" +
         { parse_mode: "Markdown" }
       );
     });

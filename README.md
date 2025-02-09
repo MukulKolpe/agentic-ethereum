@@ -1,0 +1,6 @@
+### Deployed Contract Addresses on Sepolia Testnet:
+
+- DAOToken - 0x6D8780862c1c9494dC3C50b5b10c893a4b6836d4
+- CreateDAOToken - 0xB711Ee75895D7B3Dc19432Ad4589AA364e643aec
+- DAOManager - 0xb45875FC0916c55f30473C4c6377f3110451AC1d
+

@@ -39,6 +39,10 @@ ifeq ($(findstring --network sepolia,$(ARGS)),--network sepolia)
 	NETWORK_ARGS := --rpc-url $(RPC_URL) --private-key $(PRIVATE_KEY) --broadcast -vvvv
 endif
 
+ifeq ($(findstring --network base-sepolia,$(ARGS)),--network base-sepolia)
+	NETWORK_ARGS := --rpc-url $(BASE_SEPOLIA_RPC_URL) --private-key $(PRIVATE_KEY) --broadcast -vvvv
+endif
+
 deploy:
 	@forge script script/DeployContracts.s.sol:DeployContracts $(NETWORK_ARGS)
 

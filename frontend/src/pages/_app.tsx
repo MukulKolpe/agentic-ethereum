@@ -48,17 +48,17 @@ export default function App({ Component, pageProps }: AppProps) {
       <WagmiProvider config={connectkitConfig}>
         <QueryClientProvider client={queryClient}>
           <ConnectKitProvider>
-            <div
+            {/* <div
               style={{
                 display: "flex",
                 flexDirection: "column",
                 minHeight: "100vh",
-              }}
-            >
-              <Navbar />
-              <Component {...pageProps} />
-              <Footer />
-            </div>
+              }} 
+            >*/}
+            <Navbar />
+            <Component {...pageProps} />
+            <Footer />
+            {/* </div> */}
           </ConnectKitProvider>
         </QueryClientProvider>
       </WagmiProvider>

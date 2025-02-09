@@ -1,114 +1,176 @@
-import Image from "next/image";
-import { Geist, Geist_Mono } from "next/font/google";
+"use client";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import { useRef } from "react";
+import Head from "next/head";
+import Navbar from "@/components/Navbar";
+import ParticleNetwork from "@/components/ParticleNetwork";
+import { Button } from "@/components/ui/button";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { ArrowRight, Vote, Users, Bot, Cog } from "lucide-react";
 
 export default function Home() {
-  return (
-    <div
-      className={`${geistSans.variable} ${geistMono.variable} grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]`}
-    >
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/pages/index.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const targetRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: targetRef,
+    offset: ["start start", "end start"],
+  });
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+  const scale = useTransform(scrollYProgress, [0, 0.5], [1, 0.8]);
+
+  const fadeInUpVariants = {
+    initial: { opacity: 0, y: 20 },
+    animate: { opacity: 1, y: 0 },
+  };
+
+  return (
+    <>
+      <Head>
+        <title>DAOPlatform - Empower Your Decentralized Organization</title>
+        <meta
+          name="description"
+          content="Streamline governance, enhance collaboration, and automate operations with our intelligent DAO platform"
+        />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+
+      <main>
+        {/* Hero Section */}
+        <section
+          ref={targetRef}
+          className="relative h-screen flex items-center justify-center overflow-hidden"
+        >
+          <ParticleNetwork />
+          <motion.div
+            className="relative z-10 text-center max-w-4xl mx-auto px-4"
+            style={{ opacity, scale }}
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
+            <motion.h1
+              className="text-5xl md:text-7xl font-bold mb-6 gradient-text"
+              variants={fadeInUpVariants}
+              initial="initial"
+              animate="animate"
+              transition={{ duration: 0.6 }}
+            >
+              Empower Your Decentralized Organization
+            </motion.h1>
+            <motion.p
+              className="text-xl md:text-2xl mb-8 text-blue-200"
+              variants={fadeInUpVariants}
+              initial="initial"
+              animate="animate"
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              Streamline governance, enhance collaboration, and automate
+              operations with our intelligent platform
+            </motion.p>
+            <motion.div
+              variants={fadeInUpVariants}
+              initial="initial"
+              animate="animate"
+              transition={{ duration: 0.6, delay: 0.4 }}
+            >
+              <Button className="group bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 text-lg">
+                Get Started
+                <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+              </Button>
+            </motion.div>
+          </motion.div>
+        </section>
+
+        {/* Features Section */}
+        <section className="py-20">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <motion.h2
+              className="text-4xl font-bold mb-12 text-center gradient-text"
+              variants={fadeInUpVariants}
+              initial="initial"
+              whileInView="animate"
+              viewport={{ once: true }}
+            >
+              Key Features
+            </motion.h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {[
+                {
+                  title: "Smart Governance",
+                  description: "Efficient decision-making processes",
+                  icon: Vote,
+                },
+                {
+                  title: "AI-Powered Insights",
+                  description: "Data-driven community management",
+                  icon: Bot,
+                },
+                {
+                  title: "Seamless Collaboration",
+                  description: "Enhanced member engagement tools",
+                  icon: Users,
+                },
+                {
+                  title: "Automated Operations",
+                  description: "Streamlined organizational tasks",
+                  icon: Cog,
+                },
+              ].map((feature, index) => (
+                <motion.div
+                  key={index}
+                  className="bg-gray-800 p-6 rounded-lg shadow-lg card-hover"
+                  variants={fadeInUpVariants}
+                  initial="initial"
+                  whileInView="animate"
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                >
+                  <feature.icon className="h-12 w-12 mb-4 text-blue-400" />
+                  <h3 className="text-xl font-semibold mb-4">
+                    {feature.title}
+                  </h3>
+                  <p className="text-gray-300">{feature.description}</p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* CTA Section */}
+        <section className="py-20 bg-gray-800">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <motion.h2
+              className="text-4xl font-bold mb-6 gradient-text"
+              variants={fadeInUpVariants}
+              initial="initial"
+              whileInView="animate"
+              viewport={{ once: true }}
+            >
+              Ready to Transform Your Organization?
+            </motion.h2>
+            <motion.p
+              className="text-xl mb-8 text-blue-200"
+              variants={fadeInUpVariants}
+              initial="initial"
+              whileInView="animate"
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+            >
+              Join the future of decentralized governance and collaboration
+            </motion.p>
+            <motion.div
+              variants={fadeInUpVariants}
+              initial="initial"
+              whileInView="animate"
+              viewport={{ once: true }}
+              transition={{ delay: 0.4 }}
+            >
+              <Button className="group bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 text-lg">
+                Start Your Journey
+                <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+              </Button>
+            </motion.div>
+          </div>
+        </section>
       </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+    </>
   );
 }

@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
+import { ConnectKitButton } from "connectkit";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -49,11 +50,8 @@ const Navbar = () => {
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.6 }}
-              >
-                <Button className="ml-4 bg-blue-600 hover:bg-blue-700 text-white">
-                  Get Started
-                </Button>
-              </motion.div>
+              ></motion.div>
+              <ConnectKitButton />
             </div>
           </div>
           <div className="md:hidden">
@@ -84,9 +82,7 @@ const Navbar = () => {
                   {item}
                 </Link>
               ))}
-              <Button className="w-full mt-4 bg-blue-600 hover:bg-blue-700 text-white">
-                Get Started
-              </Button>
+              <ConnectKitButton />
             </div>
           </motion.div>
         )}

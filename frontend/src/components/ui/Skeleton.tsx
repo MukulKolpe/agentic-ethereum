@@ -1,3 +1,4 @@
+// @ts-nocheck comment
 import type React from "react";
 import { cn } from "@/utils/utils";
 

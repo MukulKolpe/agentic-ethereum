@@ -8,9 +8,11 @@ import ParticleNetwork from "@/components/ParticleNetwork";
 import { Button } from "@/components/ui/button";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, Vote, Users, Bot, Cog } from "lucide-react";
+import { useRouter } from "next/router";
 
 export default function Home() {
   const targetRef = useRef<HTMLDivElement>(null);
+  const router = useRouter();
   const { scrollYProgress } = useScroll({
     target: targetRef,
     offset: ["start start", "end start"],
@@ -27,7 +29,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>DAOPlatform - Empower Your Decentralized Organization</title>
+        <title>DAO Wizard</title>
         <meta
           name="description"
           content="Streamline governance, enhance collaboration, and automate operations with our intelligent DAO platform"
@@ -54,7 +56,7 @@ export default function Home() {
               animate="animate"
               transition={{ duration: 0.6 }}
             >
-              Empower Your Decentralized Organization
+              DAO Wizard: Autonomous, AI-Driven DAO Infrastructure
             </motion.h1>
             <motion.p
               className="text-xl md:text-2xl mb-8 text-blue-200"
@@ -63,8 +65,7 @@ export default function Home() {
               animate="animate"
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              Streamline governance, enhance collaboration, and automate
-              operations with our intelligent platform
+              Simplifying governance and tokenomics with AI agents.
             </motion.p>
             <motion.div
               variants={fadeInUpVariants}
@@ -72,7 +73,10 @@ export default function Home() {
               animate="animate"
               transition={{ duration: 0.6, delay: 0.4 }}
             >
-              <Button className="group bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 text-lg">
+              <Button
+                className="group bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 text-lg"
+                onClick={() => router.push("/register")}
+              >
                 Get Started
                 <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
               </Button>
@@ -95,23 +99,24 @@ export default function Home() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               {[
                 {
-                  title: "Smart Governance",
-                  description: "Efficient decision-making processes",
+                  title: "Abstracted Tokenomics",
+                  description: "Simplify DAO economics without complexity",
                   icon: Vote,
                 },
                 {
-                  title: "AI-Powered Insights",
-                  description: "Data-driven community management",
+                  title: "AI-Powered Governance",
+                  description:
+                    "Automate decision-making with autonomous agents",
                   icon: Bot,
                 },
                 {
-                  title: "Seamless Collaboration",
-                  description: "Enhanced member engagement tools",
+                  title: "Seamless DAO Creation",
+                  description: "Launch and manage DAOs effortlessly",
                   icon: Users,
                 },
                 {
-                  title: "Automated Operations",
-                  description: "Streamlined organizational tasks",
+                  title: "Natural Language Control",
+                  description: "Govern DAOs using simple text commands",
                   icon: Cog,
                 },
               ].map((feature, index) => (
@@ -164,8 +169,11 @@ export default function Home() {
               viewport={{ once: true }}
               transition={{ delay: 0.4 }}
             >
-              <Button className="group bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 text-lg">
-                Start Your Journey
+              <Button
+                className="group bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 text-lg"
+                onClick={() => router.push("/create-dao")}
+              >
+                Setup Your DAO
                 <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
               </Button>
             </motion.div>

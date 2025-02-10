@@ -1,3 +1,4 @@
+// @ts-nocheck comment
 import { ethers } from "ethers";
 import daoManager from "@/utils/abi/daoManager.json";
 

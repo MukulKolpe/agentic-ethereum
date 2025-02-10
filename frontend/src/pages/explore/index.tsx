@@ -69,7 +69,7 @@ export default function Explore() {
   }, []);
 
   return (
-    <Box className="min-h-screen bg-background flex items-center justify-center">
+    <Box className="min-h-screen bg-background flex items-center justify-center pt-16">
       {isLoading ? (
         <div className="flex flex-col items-center justify-center">
           <Spinner size="xl" className="text-primary" />

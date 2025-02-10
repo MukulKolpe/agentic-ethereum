@@ -26,27 +26,60 @@ const Navbar = () => {
             transition={{ delay: 0.2 }}
             className="flex items-center"
           >
-            <Link href="/" className="text-2xl font-bold text-blue-400">
-              DAOPlatform
+            <Link href="/" className="text-3xl font-bold text-blue-400">
+              DAO Wizard
             </Link>
           </motion.div>
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-4">
-              {["Features", "About", "Contact"].map((item, index) => (
-                <motion.div
-                  key={item}
-                  initial={{ opacity: 0, y: -20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.3 + index * 0.1 }}
+              <motion.div
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 }}
+              >
+                <Link
+                  href={`/register`}
+                  className="text-gray-300 hover:text-blue-400 px-3 py-2 rounded-md text-xl font-medium transition-colors duration-200"
                 >
-                  <Link
-                    href={`#${item.toLowerCase()}`}
-                    className="text-gray-300 hover:text-blue-400 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
-                  >
-                    {item}
-                  </Link>
-                </motion.div>
-              ))}
+                  Register
+                </Link>
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 }}
+              >
+                <Link
+                  href={`/create-dao`}
+                  className="text-gray-300 hover:text-blue-400 px-3 py-2 rounded-md text-xl font-medium transition-colors duration-200"
+                >
+                  Create DAO
+                </Link>
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 }}
+              >
+                <Link
+                  href={`/explore`}
+                  className="text-gray-300 hover:text-blue-400 px-3 py-2 rounded-md text-xl font-medium transition-colors duration-200"
+                >
+                  Explore DAOs
+                </Link>
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 }}
+              >
+                <Link
+                  href={`/profile`}
+                  className="text-gray-300 hover:text-blue-400 px-3 py-2 rounded-md text-xl font-medium transition-colors duration-200"
+                >
+                  Profile
+                </Link>
+              </motion.div>
               <motion.div
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
@@ -74,7 +107,7 @@ const Navbar = () => {
             className="md:hidden"
           >
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-              {["Features", "About", "Contact"].map((item) => (
+              {["Register", "Create-DAO", "Explore", "Profile"].map((item) => (
                 <Link
                   key={item}
                   href={`#${item.toLowerCase()}`}

@@ -16,7 +16,7 @@ const Navbar = () => {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ type: "spring", stiffness: 100 }}
-      className="bg-gray-900/50 backdrop-blur supports-[backdrop-filter]:bg-gray-900/50 fixed top-0 left-0 right-0 z-50 border-b border-gray-800"
+      className="bg-gray-900/50 backdrop-blur supports-[backdrop-filter]:bg-gray-900/50 fixed top-6 left-6 right-6 z-50 border-b border-gray-800"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
